@@ -1,0 +1,5 @@
+projectKey=AP_opdrachten:pokergame
+serverUrl=http://localhost:9091
+dashboardUrl=http://localhost:9091/dashboard/index/AP_opdrachten:pokergame
+ceTaskId=AVrM1joK75r9a3VQKBFL
+ceTaskUrl=http://localhost:9091/api/ce/task?id=AVrM1joK75r9a3VQKBFL
