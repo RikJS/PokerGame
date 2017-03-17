@@ -13,17 +13,17 @@ package pokergame.domain;
  */
 public class Card {
     // Instance variables.
-    private int value;
     private String suit;
+    private int value;
 
     /**
      * Constructor which takes in a card value and suit as an argument
      * and then sets the instance variables to those values.
      *
-     * @param value The value of the pokergame.domain.Card object that is being created.
      * @param suit  The suit of the pokergame.domain.Card object that is being created.
+     * @param value The value of the pokergame.domain.Card object that is being created.
      */
-    public Card(int value, String suit) {
+    public Card(String suit, int value) {
         this.value = value;
         this.suit = suit;
     }
@@ -79,31 +79,41 @@ public class Card {
      */
     @Override
     public String toString() {
-        String cardValue = Integer.toString(value);
+        CardValue cardValue = new CardValue(value).invoke();
 
         // Change the value to the actual name when printing out
         // the card.
-        switch (value) {
-            case 11:
-                cardValue = "Jack";
-                break;
 
-            case 12:
-                cardValue = "Queen";
-                break;
+        return cardValue.getValueName() + " of " + suit;
+    }
 
-            case 13:
-                cardValue = "King";
-                break;
+    private class CardValue {
+        int value = 0;
 
-            case 14:
-                cardValue = "Ace";
-                break;
+        private CardValue(int value) {
+            this.value = value;
+        }
+        private String getValueName() {
+            switch (value) {
+                case 11:
+                    return "Jack";
 
-            default:
-                break;
+                case 12:
+                    return "Queen";
+
+                case 13:
+                    return "King";
+
+                case 14:
+                    return "Ace";
+
+                default:
+                    return Integer.toString(value);
+            }
         }
 
-        return cardValue + " of " + suit;
+        private CardValue invoke() {
+            return this;
+        }
     }
 }

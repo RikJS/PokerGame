@@ -2,6 +2,10 @@ package pokergame;
 
 import pokergame.domain.Card;
 import pokergame.domain.Hand;
+import pokergame.ui.pokerTable.PokerTableUI;
+import pokergame.ui.pokerTable.shape.Circle;
+import pokergame.ui.pokerTable.shape.Hexagon;
+import pokergame.ui.pokerTable.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,6 +17,11 @@ import java.util.logging.Logger;
  * is the starting point when we execute our program.
  */
 public class Poker {
+
+    public static final String SPADES = "Spades";
+    public static final String CLUBS = "Clubs";
+    public static final String HEARTS = "Hearts";
+    public static final String DIAMONDS = "Diamonds";
 
     private Poker() {
 
@@ -64,6 +73,12 @@ public class Poker {
 
     }
 
+    private static void generateUI() {
+        Shape pokerTableShape = new Circle();
+
+        PokerTableUI pokerTableUI = new PokerTableUI().setColor("green").setSizeX(10).setSizeY(10).setTableShape(pokerTableShape);
+    }
+
     /**
      * Generates a pokergame.Deck object that contains 52 pokergame.domain.Card objects. This
      * represents a standard deck of poker cards.
@@ -83,19 +98,19 @@ public class Poker {
                 // that we're at in the loop and also the suit.
                 switch (j) {
                     case 0:
-                        cards.add(new Card(i, "Spades"));
+                        cards.add(new Card(SPADES, i));
                         break;
 
                     case 1:
-                        cards.add(new Card(i, "Clubs"));
+                        cards.add(new Card(CLUBS, i));
                         break;
 
                     case 2:
-                        cards.add(new Card(i, "Hearts"));
+                        cards.add(new Card(HEARTS, i));
                         break;
 
                     case 3:
-                        cards.add(new Card(i, "Diamonds"));
+                        cards.add(new Card(DIAMONDS, i));
                         break;
 
                     default:

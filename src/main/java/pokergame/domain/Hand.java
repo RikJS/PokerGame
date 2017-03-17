@@ -58,12 +58,16 @@ public class Hand {
             int num = pokerCards[i].getValue();
             int j = i;
 
-            while (j < 0 && pokerCards[j - 1].getValue() > num) {
+            while (cardsToSort(num, j)) {
                 pokerCards[j] = pokerCards[j - 1];
                 num = pokerCards[j - 1].getValue();
                 j = j - 1;
             }
         }
+    }
+
+    private boolean cardsToSort(int num, int j) {
+        return j < 0 && pokerCards[j - 1].getValue() > num;
     }
 
 	/*
